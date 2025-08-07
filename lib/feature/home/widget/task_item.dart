@@ -148,6 +148,16 @@ class TaskItem extends StatelessWidget {
                     ],
                   ),
                 ),
+                Text(
+                  coins ?? '+10',
+                  style: TextStyle(
+                    color: isLocked
+                        ? Colors.grey.shade600
+                        : const Color(0xFFE0CD67), // #E0CD67
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ],
             ),
           ),

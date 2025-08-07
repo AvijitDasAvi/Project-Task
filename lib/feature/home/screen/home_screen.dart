@@ -59,18 +59,86 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
+            // Base black background
+            Container(height: 412, width: double.infinity, color: Colors.black),
+            // Upper left - Purple gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF8246FB).withValues(alpha: 0.4), // #8246FB66
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(-0.8, -0.8), // Upper left positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Upper right - Blue gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF2A71E3).withValues(alpha: 0.4), // #2A71E366
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(0.8, -0.8), // Upper right positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Bottom left - Blue gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF2A71E3).withValues(alpha: 0.4), // #2A71E366
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(-0.8, 0.8), // Bottom left positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Bottom right - Purple gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF8246FB).withValues(alpha: 0.4), // #8246FB66
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(0.8, 0.8), // Bottom right positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Bottom fade to black overlay for smooth transition
             Container(
               height: 412,
               width: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    // ignore: deprecated_member_use
-                    Color(0xFF8246FB).withValues(alpha: 0.6),
-                    // ignore: deprecated_member_use
-                    Color(0xFF8246FB).withValues(alpha: 0.0),
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.black.withValues(alpha: 0.3),
+                    Colors.black.withValues(alpha: 0.8),
+                    Colors.black,
                   ],
-                  stops: const [0.0, 1.0],
+                  stops: const [0.0, 0.5, 0.7, 0.85, 1.0],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -98,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             'Good Evening, Vikas',
                             style: TextStyle(
@@ -108,20 +176,30 @@ class HomeScreen extends StatelessWidget {
                               height: 1.2,
                             ),
                           ),
-                          Text(
-                            'Keep mining, keep earning',
-                            style: TextStyle(
-                              color: Colors.white60,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 13,
-                              height: 1.2,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Dx385...96E03F',
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 13,
+                                  height: 1.2,
+                                ),
+                              ),
+                              SizedBox(width: 6),
+                              Image.asset(
+                                'assets/icons/copy_icon.png',
+                                height: 16,
+                                width: 16,
+                              ),
+                            ],
                           ),
                         ],
                       ),
                       const Spacer(),
                       Image.asset(
-                        'assets/icons/headphone.png',
+                        'assets/icons/crown_icon.png',
                         height: 40,
                         width: 40,
                       ),
@@ -145,7 +223,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisCount: 3,
                           crossAxisSpacing: 9,
                           mainAxisSpacing: 9,
-                          childAspectRatio: 1,
+                          childAspectRatio: 1.3,
                         ),
                     itemCount: gridData.length,
                     itemBuilder: (context, index) {
@@ -200,7 +278,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Tasks',
+                    'Milestones',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
