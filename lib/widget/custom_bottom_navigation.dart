@@ -42,7 +42,7 @@ class CustomBottomNavigation extends StatelessWidget {
         height: 70,
         decoration: BoxDecoration(
           color: Colors.grey.shade900.withValues(alpha: 0.9),
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(100),
           border: Border.all(
             color: Colors.white.withValues(alpha: 0.1),
             width: 1,
@@ -63,13 +63,13 @@ class CustomBottomNavigation extends StatelessWidget {
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(100),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.black.withValues(alpha: 0.3),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(100),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
@@ -100,7 +100,7 @@ class CustomBottomNavigation extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(100),
           gradient: item.isActive
               ? const LinearGradient(
                   colors: [Color(0xFFA746FB), Color(0xFF2A71E3)],
