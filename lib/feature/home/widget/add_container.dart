@@ -53,7 +53,7 @@ class AddContainer extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Earn 500 for each friend you invite',
+                    'Get 500 Coins for every invite',
                     style: TextStyle(
                       color: Colors.white70,
                       fontWeight: FontWeight.w400,

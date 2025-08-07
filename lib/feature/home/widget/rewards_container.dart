@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class RewardsContainer extends StatelessWidget {
   const RewardsContainer({super.key});
@@ -28,7 +29,7 @@ class RewardsContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Rewards Earned',
+                    'Wallet Balance',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.normal,
@@ -87,11 +88,25 @@ class RewardsContainer extends StatelessWidget {
               height: 8,
               child: Stack(
                 children: [
-                  // This is the background of the progress bar (the "unfilled" part).
-                  Container(
-                    color: const Color(
-                      0xFF757575,
-                    ), // A gray color that matches the design.
+                  // This is the background of the progress bar (the "unfilled" part) with glassmorphism effect.
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4.0),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: RadialGradient(
+                            colors: [
+                              Color(0xFFFFFFFF).withValues(alpha: 0.13),
+                              Color(0xFFFFFFFF).withValues(alpha: 0.05),
+                            ],
+                            center: Alignment.center,
+                            radius: 1.2,
+                          ),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
+                      ),
+                    ),
                   ),
                   // This is the progress indicator (the "filled" part).
                   // FractionallySizedBox sets the width based on the progress value.

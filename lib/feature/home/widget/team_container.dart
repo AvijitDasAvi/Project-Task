@@ -16,14 +16,14 @@ class TeamContainer extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 64,
-          height: 64,
+          width: 72,
+          height: 72,
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(18),
             border: Border.all(width: 1),
           ),
-          child: Image.asset(iconPath, height: 64, width: 64),
+          child: Image.asset(iconPath, height: 72, width: 72),
         ),
         SizedBox(height: 8),
         Text(

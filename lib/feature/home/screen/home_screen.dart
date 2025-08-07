@@ -13,12 +13,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> gridData = [
-      {'iconPath': 'assets/icons/fire.png', 'title': 'Daily Streak'},
       {'iconPath': 'assets/icons/chese.png', 'title': 'Prize Pool'},
-      {'iconPath': 'assets/icons/gift.png', 'title': 'Scratch Card'},
-      {'iconPath': 'assets/icons/dollar.png', 'title': 'Play to Earn'},
-      {'iconPath': 'assets/icons/king.png', 'title': 'Leaderboard'},
-      {'iconPath': 'assets/icons/rocket.png', 'title': 'Referral'},
+      {
+        'iconPath': 'assets/icons/scratch_card_icon.png',
+        'title': 'Scratch Card',
+      },
+      {'iconPath': 'assets/icons/fire.png', 'title': 'Quick Tasks'},
+      {'iconPath': 'assets/icons/rocket.png', 'title': 'Boost'},
+      {'iconPath': 'assets/icons/referral_icon.png', 'title': 'Referral'},
+      {'iconPath': 'assets/icons/dollar_icon.png', 'title': 'Play to Earn'},
     ];
 
     final List<Map<String, dynamic>> teamData = [
@@ -298,18 +301,18 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                       SizedBox(width: 8),
                       Indicator(fillColor: Color(0xFF8246FB)),
                       SizedBox(width: 8),
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                       SizedBox(width: 8),
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                       SizedBox(width: 8),
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                     ],
                   ),
                   SizedBox(height: 24),
@@ -324,13 +327,13 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 12),
                   SocialContainer(
-                    title: 'Follow us on X',
-                    subTitle: 'Set it and share it with your friends.',
+                    title: 'Follow Us on X',
+                    subTitle: 'Stay connected and get updates.',
                   ),
                   SizedBox(height: 8),
                   SocialContainer(
-                    title: 'Join Telegram',
-                    subTitle: 'Be part of our community and join now.',
+                    title: 'Join Our Telegram',
+                    subTitle: 'Be part of live AMA discussions.',
                   ),
                 ],
               ),

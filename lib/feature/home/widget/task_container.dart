@@ -56,7 +56,7 @@ class TaskContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Earn more coins',
+                        'Your Journey',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -65,7 +65,7 @@ class TaskContainer extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Text(
-                        'Complete the tasks below and earn 84 coins',
+                        'Complete the tasks below to level up',
                         style: TextStyle(
                           color: Colors.white54,
                           fontSize: 12,
@@ -105,22 +105,19 @@ class TaskContainer extends StatelessWidget {
               Obx(
                 () => Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: List.generate(
-                    controller.tasks.length,
-                    (index) {
-                      final task = controller.tasks[index];
-                      return TaskItem(
-                        icon: task['icon'],
-                        title: task['title'],
-                        description: task['description'],
-                        isCompleted: task['isCompleted'],
-                        isLocked: task['isLocked'],
-                        isCurrent: task['isCurrent'] ?? false,
-                        isFirst: index == 0,
-                        isLast: index == controller.tasks.length - 1,
-                      );
-                    },
-                  ),
+                  children: List.generate(controller.tasks.length, (index) {
+                    final task = controller.tasks[index];
+                    return TaskItem(
+                      icon: task['icon'],
+                      title: task['title'],
+                      description: task['description'],
+                      isCompleted: task['isCompleted'],
+                      isLocked: task['isLocked'],
+                      isCurrent: task['isCurrent'] ?? false,
+                      isFirst: index == 0,
+                      isLast: index == controller.tasks.length - 1,
+                    );
+                  }),
                 ),
               ),
             ],
