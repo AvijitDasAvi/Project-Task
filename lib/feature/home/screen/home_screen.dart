@@ -13,12 +13,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> gridData = [
-      {'iconPath': 'assets/icons/fire.png', 'title': 'Daily Streak'},
       {'iconPath': 'assets/icons/chese.png', 'title': 'Prize Pool'},
-      {'iconPath': 'assets/icons/gift.png', 'title': 'Scratch Card'},
-      {'iconPath': 'assets/icons/dollar.png', 'title': 'Play to Earn'},
-      {'iconPath': 'assets/icons/king.png', 'title': 'Leaderboard'},
-      {'iconPath': 'assets/icons/rocket.png', 'title': 'Referral'},
+      {
+        'iconPath': 'assets/icons/scratch_card_icon.png',
+        'title': 'Scratch Card',
+      },
+      {'iconPath': 'assets/icons/fire.png', 'title': 'Quick Tasks'},
+      {'iconPath': 'assets/icons/rocket.png', 'title': 'Boost'},
+      {'iconPath': 'assets/icons/referral_icon.png', 'title': 'Referral'},
+      {'iconPath': 'assets/icons/dollar_icon.png', 'title': 'Play to Earn'},
     ];
 
     final List<Map<String, dynamic>> teamData = [
@@ -59,18 +62,86 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
+            // Base black background
+            Container(height: 412, width: double.infinity, color: Colors.black),
+            // Upper left - Purple gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF8246FB).withValues(alpha: 0.4), // #8246FB66
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(-0.8, -0.8), // Upper left positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Upper right - Blue gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF2A71E3).withValues(alpha: 0.4), // #2A71E366
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(0.8, -0.8), // Upper right positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Bottom left - Blue gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF2A71E3).withValues(alpha: 0.4), // #2A71E366
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(-0.8, 0.8), // Bottom left positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Bottom right - Purple gradient
+            Container(
+              height: 412,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  colors: [
+                    Color(0xFF8246FB).withValues(alpha: 0.4), // #8246FB66
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 1.0],
+                  center: Alignment(0.8, 0.8), // Bottom right positioning
+                  radius: 0.8,
+                ),
+              ),
+            ),
+            // Bottom fade to black overlay for smooth transition
             Container(
               height: 412,
               width: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    // ignore: deprecated_member_use
-                    Color(0xFF8246FB).withValues(alpha: 0.6),
-                    // ignore: deprecated_member_use
-                    Color(0xFF8246FB).withValues(alpha: 0.0),
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.black.withValues(alpha: 0.3),
+                    Colors.black.withValues(alpha: 0.8),
+                    Colors.black,
                   ],
-                  stops: const [0.0, 1.0],
+                  stops: const [0.0, 0.5, 0.7, 0.85, 1.0],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -98,7 +169,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
                             'Good Evening, Vikas',
                             style: TextStyle(
@@ -108,20 +179,30 @@ class HomeScreen extends StatelessWidget {
                               height: 1.2,
                             ),
                           ),
-                          Text(
-                            'Keep mining, keep earning',
-                            style: TextStyle(
-                              color: Colors.white60,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 13,
-                              height: 1.2,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Dx385...96E03F',
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 13,
+                                  height: 1.2,
+                                ),
+                              ),
+                              SizedBox(width: 6),
+                              Image.asset(
+                                'assets/icons/copy_icon.png',
+                                height: 16,
+                                width: 16,
+                              ),
+                            ],
                           ),
                         ],
                       ),
                       const Spacer(),
                       Image.asset(
-                        'assets/icons/headphone.png',
+                        'assets/icons/crown_icon.png',
                         height: 40,
                         width: 40,
                       ),
@@ -145,7 +226,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisCount: 3,
                           crossAxisSpacing: 9,
                           mainAxisSpacing: 9,
-                          childAspectRatio: 1,
+                          childAspectRatio: 1.3,
                         ),
                     itemCount: gridData.length,
                     itemBuilder: (context, index) {
@@ -200,7 +281,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Tasks',
+                    'Milestones',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
@@ -220,18 +301,18 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                       SizedBox(width: 8),
                       Indicator(fillColor: Color(0xFF8246FB)),
                       SizedBox(width: 8),
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                       SizedBox(width: 8),
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                       SizedBox(width: 8),
                       // ignore: deprecated_member_use
-                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.6)),
+                      Indicator(fillColor: Color(0xFFFFFFFF).withOpacity(0.06)),
                     ],
                   ),
                   SizedBox(height: 24),
@@ -246,13 +327,13 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 12),
                   SocialContainer(
-                    title: 'Follow us on X',
-                    subTitle: 'Set it and share it with your friends.',
+                    title: 'Follow Us on X',
+                    subTitle: 'Stay connected and get updates.',
                   ),
                   SizedBox(height: 8),
                   SocialContainer(
-                    title: 'Join Telegram',
-                    subTitle: 'Be part of our community and join now.',
+                    title: 'Join Our Telegram',
+                    subTitle: 'Be part of live AMA discussions.',
                   ),
                 ],
               ),

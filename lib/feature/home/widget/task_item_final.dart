@@ -91,8 +91,8 @@ class TaskItem extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: RadialGradient(
                 colors: [
-                  Color(0xFFFFFFFF).withValues(alpha: 0.13),
-                  Color(0xFFFFFFFF).withValues(alpha: 0.08),
+                  Color(0xFFFFFFFF).withValues(alpha: 0.12),
+                  Color(0xFFFFFFFF).withValues(alpha: 0.05),
                 ],
                 center: Alignment.center,
                 radius: 1.2,
@@ -200,7 +200,7 @@ class TaskItem extends StatelessWidget {
               Text(
                 description,
                 style: TextStyle(
-                  color: Colors.white54,
+                  color: Colors.grey.shade400,
                   fontSize: 10,
                   fontWeight: FontWeight.w500,
                 ),

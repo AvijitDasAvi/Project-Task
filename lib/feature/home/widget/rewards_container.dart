@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 
 class RewardsContainer extends StatelessWidget {
   const RewardsContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Define the progress value. 0.4 represents 40% to match the visual design.
+    const double progress = 0.5;
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          // ignore: deprecated_member_use
-          color: Colors.white.withOpacity(0.06),
+          color: Colors.white.withValues(alpha: 0.06),
           width: 1,
         ),
-
-        // ignore: deprecated_member_use
-        color: Colors.white.withOpacity(0.06),
+        color: Colors.white.withValues(alpha: 0.06),
       ),
       padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
       child: Column(
@@ -24,18 +25,17 @@ class RewardsContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Rewards Earned',
+                    'Wallet Balance',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.normal,
                       fontSize: 12,
                       height: 1.2,
                       letterSpacing: 0,
-                      // ignore: deprecated_member_use
                       color: Colors.white60,
                     ),
                   ),
@@ -52,12 +52,12 @@ class RewardsContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Image.asset('assets/icons/logo.png', height: 48, width: 48),
             ],
           ),
-          SizedBox(height: 14),
-          Row(
+          const SizedBox(height: 14),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -80,60 +80,69 @@ class RewardsContainer extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10),
-          Container(
-            width: double.infinity,
-            height: 8,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.horizontal(
-                        left: Radius.circular(4),
+          const SizedBox(height: 10),
+          // Use ClipRRect to ensure the child widgets are clipped with the same border radius.
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4.0),
+            child: SizedBox(
+              height: 8,
+              child: Stack(
+                children: [
+                  // This is the background of the progress bar (the "unfilled" part) with glassmorphism effect.
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4.0),
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: RadialGradient(
+                            colors: [
+                              Color(0xFFFFFFFF).withValues(alpha: 0.13),
+                              Color(0xFFFFFFFF).withValues(alpha: 0.05),
+                            ],
+                            center: Alignment.center,
+                            radius: 1.2,
+                          ),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(4),
-                      ),
-                    ),
+                  // This is the progress indicator (the "filled" part).
+                  // FractionallySizedBox sets the width based on the progress value.
+                  FractionallySizedBox(
+                    widthFactor: progress, // Represents 40% progress.
+                    child: Container(color: Colors.white),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          SizedBox(height: 14),
+          const SizedBox(height: 14),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13),
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: Color(0xFF8246FB),
+              gradient: const LinearGradient(
+                colors: [Color(0xFFA746FB), Color(0xFF2A71E3)],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
             ),
-            child: Text(
+            child: const Text(
               'Start Mining',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 13,
-                height: 1.2,
+                height: 1.4,
                 color: Colors.white,
               ),
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 14),
-          Center(
+          const SizedBox(height: 14),
+          const Center(
             child: Text(
               'Complete to unlock Lucky Spin',
               style: TextStyle(
